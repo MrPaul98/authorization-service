@@ -22,7 +22,7 @@ phases:
     - echo Build completed on `date`
     - echo $(docker images)
     - echo Pushing docker image
-    - docker tag my-pension-rest-api-repo:latest 274201610284.dkr.ecr.us-west-1.amazonaws.com/my-pension-rest-api-repo:latest
+    - docker tag $IMAGE_URI
     - docker push $IMAGE_URI
     - echo push completed
     - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $IMAGE_URI > imagedefinitions.json
