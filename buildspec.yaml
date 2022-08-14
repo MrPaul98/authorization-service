@@ -24,6 +24,7 @@ phases:
     - aws --region $AWS_DEFAULT_REGION ecr get-login-password
     - echo Pushing docker image
     - docker push $IMAGE_URI
+    - docker push $IMAGE_URI
     - echo push completed
     - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $IMAGE_URI > imagedefinitions.json
 artifacts:
