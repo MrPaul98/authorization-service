@@ -9,7 +9,7 @@ phases:
     - aws --version
     - aws --region $AWS_DEFAULT_REGION ecr get-login-password
     - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-    - IMAGE_URI=${REPOSITORY_URI}:${TAG}
+    - IMAGE_URI=${REPOSITORY_URI}
   build:
     commands:
     - echo Build started on `date`
@@ -21,7 +21,6 @@ phases:
     - printenv
     - echo Build completed on `date`
     - echo $(docker images)
-    - aws --region $AWS_DEFAULT_REGION ecr get-login-password
     - echo Pushing docker image
     - docker push $IMAGE_URI
     - docker push $IMAGE_URI
