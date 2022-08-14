@@ -21,6 +21,7 @@ phases:
     - printenv
     - echo Build completed on `date`
     - echo $(docker images)
+    - aws --region $AWS_DEFAULT_REGION ecr get-login-password
     - echo Pushing docker image
     - docker push $IMAGE_URI
     - echo push completed
